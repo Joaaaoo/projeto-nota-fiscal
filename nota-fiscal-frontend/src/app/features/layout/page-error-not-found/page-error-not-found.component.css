@@ -1,0 +1,17 @@
+.helper-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  text-align: center;
+}
+
+.mensagem-erro {
+  margin-top: 20px;
+}
+
+.mensagem-erro p {
+  font-size: 1.2em;
+  margin-bottom: 20px;
+}

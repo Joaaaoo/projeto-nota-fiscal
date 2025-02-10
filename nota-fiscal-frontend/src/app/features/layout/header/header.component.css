@@ -1,0 +1,9 @@
+header {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 2rem;
+}
+
+p-menubar {
+  margin-top: 3%;
+}

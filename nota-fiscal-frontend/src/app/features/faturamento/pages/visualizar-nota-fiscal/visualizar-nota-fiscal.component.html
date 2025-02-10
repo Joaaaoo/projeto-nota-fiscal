@@ -1,0 +1,45 @@
+<p-toast key="tr" position="top-right"></p-toast>
+
+<section class="helper-center" @fadeIn>
+  <app-componente-titulo-dinamico
+    titulo="Visualizar Nota Fiscal"
+    subtitulo="Detalhes da nota fiscal selecionada."
+  ></app-componente-titulo-dinamico>
+
+  <p-toolbar>
+    <p-button
+      label="Gerar PDF para impressão"
+      text
+      severity="secondary"
+      icon="pi pi-file-pdf"
+      (click)="gerarPDF()"
+    ></p-button>
+  </p-toolbar>
+
+  <p-panel header="Detalhes da Nota Fiscal">
+    <p-card *ngIf="notaFiscal">
+      <ng-template pTemplate="header">
+        <div class="header">
+          <h2>Nota Fiscal #{{ notaFiscal.id }}</h2>
+        </div>
+      </ng-template>
+      <div class="conteudo">
+        <p><strong>Nome do Cliente:</strong> {{ notaFiscal.nomeCliente }}</p>
+        <p>
+          <strong>Valor Total:</strong> {{ notaFiscal.valorTotal | currency }}
+        </p>
+        <p>
+          <strong>Data de Emissão:</strong>
+          {{ notaFiscal.dataEmissao | date : "short" }}
+        </p>
+        <h3>Itens</h3>
+        <ul>
+          <li *ngFor="let item of notaFiscal.itens">
+            {{ item.quantidade }}x {{ item.nomeProduto }} -
+            {{ item.precoTotal | currency }}
+          </li>
+        </ul>
+      </div>
+    </p-card>
+  </p-panel>
+</section>

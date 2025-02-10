@@ -1,0 +1,56 @@
+<p-toast key="tr" position="top-right"></p-toast>
+
+<section class="helper-center" @fadeIn>
+  <app-componente-titulo-dinamico
+    titulo="Faturamento"
+    subtitulo="Gerenciamento de notas fiscais"
+  ></app-componente-titulo-dinamico>
+
+  <p-toolbar>
+    <p-button
+      icon="pi pi-plus"
+      text
+      severity="secondary"
+      routerLink="/gerar-nota-fiscal"
+      label="Gerar Nota Fiscal"
+    />
+  </p-toolbar>
+
+  <p-progressSpinner *ngIf="loading"></p-progressSpinner>
+
+  <p-table
+    *ngIf="!loading"
+    [value]="(notasFiscais$ | async) || []"
+    stripedRows
+    [tableStyle]="{ 'min-width': '50rem' }"
+    [paginator]="true"
+    [rows]="10"
+  >
+    <ng-template #header>
+      <tr>
+        <th>ID</th>
+        <th>Nome Cliente</th>
+        <th>Valor Total</th>
+        <th>Data Emissão</th>
+        <th>Ações</th>
+      </tr>
+    </ng-template>
+    <ng-template #body let-notaFiscal>
+      <tr>
+        <td>{{ notaFiscal.id }}</td>
+        <td>{{ notaFiscal.nomeCliente }}</td>
+        <td>{{ notaFiscal.valorTotal }}</td>
+        <td>{{ notaFiscal.dataEmissao | date : "short" }}</td>
+        <td>
+          <p-button
+            icon="pi pi-eye"
+            text
+            severity="secondary"
+            routerLink="/visualizar-nota-fiscal/{{ notaFiscal.id }}"
+            label="Visualizar"
+          />
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
+</section>

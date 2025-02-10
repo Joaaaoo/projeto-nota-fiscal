@@ -1,0 +1,23 @@
+{
+  "Version": 1,
+  "Hash": "rD0Vgdh1bkwU8nPbMAsQp8MBsM+g5DUQenwkSAx6SHs=",
+  "Source": "FaturamentoService",
+  "BasePath": "_content/FaturamentoService",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [
+    {
+      "Identity": "C:\\Users\\joao\\Desktop\\projeto-nota-fiscal\\nota-fiscal-backend\\EstoqueService\\EstoqueService.csproj",
+      "Version": 2,
+      "Source": "EstoqueService",
+      "GetPublishAssetsTargets": "ComputeReferencedStaticWebAssetsPublishManifest;GetCurrentProjectPublishStaticWebAssetItems",
+      "AdditionalPublishProperties": "Configuration=Debug;Platform=AnyCPU",
+      "AdditionalPublishPropertiesToRemove": "WebPublishProfileFile;TargetFramework",
+      "GetBuildAssetsTargets": "GetCurrentProjectBuildStaticWebAssetItems",
+      "AdditionalBuildProperties": "Configuration=Debug;Platform=AnyCPU",
+      "AdditionalBuildPropertiesToRemove": "WebPublishProfileFile;TargetFramework"
+    }
+  ],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}

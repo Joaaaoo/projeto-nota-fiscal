@@ -1,0 +1,34 @@
+.titulo-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.titulo-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.voltar-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+}
+
+.voltar-btn i {
+  font-size: 1rem;
+}
+
+h1 {
+  font-size: 1.5rem;
+  font-weight: 500;
+}
+
+span {
+  color: #a1a1aa;
+}

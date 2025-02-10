@@ -1,0 +1,136 @@
+<p-toast key="tr" position="top-right"></p-toast>
+
+<section class="helper-center" @fadeIn>
+  <app-componente-titulo-dinamico
+    titulo="Gerar Nota Fiscal"
+    subtitulo="Preencha os campos para gerar uma nova nota fiscal"
+  ></app-componente-titulo-dinamico>
+
+  <p-panel header="Formulário para gerar nota fiscal.">
+    <form [formGroup]="notaFiscalForm" (ngSubmit)="onSubmit()">
+      <div class="formulario-campo">
+        <label for="nomeCliente">
+          Nome do Cliente<span class="formulario-campo-obrigatorio-aviso">
+            *</span
+          >
+        </label>
+        <input
+          id="nomeCliente"
+          type="text"
+          pInputText
+          formControlName="nomeCliente"
+        />
+        <small
+          *ngIf="
+            notaFiscalForm.get('nomeCliente')?.invalid &&
+            notaFiscalForm.get('nomeCliente')?.touched
+          "
+          class="p-error"
+        >
+          Nome do cliente é obrigatório
+        </small>
+      </div>
+
+      <div formArrayName="itens">
+        <div
+          *ngFor="let item of itens.controls; let i = index"
+          [formGroupName]="i"
+          class="formulario-campo"
+        >
+          <div class="item-container">
+            <div class="item-fields">
+              <div>
+                <label for="produtoId-{{ i }}">
+                  Produto<span class="formulario-campo-obrigatorio-aviso">
+                    *</span
+                  >
+                </label>
+                <p-dropdown
+                  id="produtoId-{{ i }}"
+                  [options]="(produtos$ | async) || []"
+                  optionLabel="nome"
+                  optionValue="id"
+                  formControlName="produtoId"
+                  (onChange)="atualizarNomeProduto(item, $event.value)"
+                ></p-dropdown>
+                <small
+                  *ngIf="
+                    item.get('produtoId')?.invalid &&
+                    item.get('produtoId')?.touched
+                  "
+                  class="p-error"
+                >
+                  Selecione um produto
+                </small>
+              </div>
+
+              <div>
+                <label for="quantidade-{{ i }}">
+                  Quantidade<span class="formulario-campo-obrigatorio-aviso">
+                    *</span
+                  >
+                </label>
+                <input
+                  id="quantidade-{{ i }}"
+                  type="number"
+                  pInputText
+                  formControlName="quantidade"
+                />
+                <small
+                  *ngIf="
+                    item.get('quantidade')?.invalid &&
+                    item.get('quantidade')?.touched
+                  "
+                  class="p-error"
+                >
+                  Quantidade mínima: 1
+                </small>
+              </div>
+
+              <input type="hidden" formControlName="nomeProduto" />
+            </div>
+
+            <button
+              type="button"
+              label="Remover"
+              pButton
+              icon="pi pi-minus"
+              class="p-button-danger mt-2"
+              (click)="removerItem(i)"
+            ></button>
+          </div>
+        </div>
+      </div>
+
+      <div *ngIf="notaFiscalForm.errors?.['produtoDuplicado']" class="p-error">
+        Não é permitido adicionar o mesmo produto mais de uma vez.
+      </div>
+
+      <div class="formulario-campo-botoes">
+        <button
+          type="submit"
+          pButton
+          label="Salvar"
+          icon="pi pi-check"
+          severity="success"
+        ></button>
+        <button
+          type="button"
+          pButton
+          label="Cancelar"
+          icon="pi pi-times"
+          severity="warn"
+          (click)="voltar()"
+        ></button>
+        <button
+          type="button"
+          label="Adicionar novo item"
+          pButton
+          icon="pi pi-plus"
+          class="p-button-success"
+          (click)="adicionarItem()"
+        ></button>
+      </div>
+    </form>
+  </p-panel>
+</section>

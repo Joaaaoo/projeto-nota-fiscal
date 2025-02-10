@@ -1,0 +1,30 @@
+section {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  margin-bottom: 400px !important;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.conteudo {
+  text-align: left;
+}
+
+.conteudo p {
+  margin: 0.5em 0;
+}
+
+.conteudo ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.conteudo ul li {
+  margin: 0.5em 0;
+}

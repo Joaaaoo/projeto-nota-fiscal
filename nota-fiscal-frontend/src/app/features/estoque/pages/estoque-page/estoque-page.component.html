@@ -1,0 +1,61 @@
+<!-- Componente de toast PRIMGNG para mostrar notificações no canto da tela -->
+<p-toast key="tr" position="top-right"></p-toast>
+
+<section class="helper-center" @fadeIn>
+  <!-- Componente de título dinâmico -->
+  <app-componente-titulo-dinamico
+    titulo="Estoque"
+    subtitulo="Gerenciamento de estoque"
+  ></app-componente-titulo-dinamico>
+
+  <!-- Toolbar com botão de adicionar produto -->
+  <p-toolbar>
+    <p-button
+      icon="pi pi-plus"
+      text
+      severity="secondary"
+      routerLink="/adicionar-produto"
+      label="Adicionar"
+    />
+  </p-toolbar>
+
+  <!-- Spinner de carregamento -->
+  <p-progressSpinner *ngIf="loading"></p-progressSpinner>
+
+  <!-- Tabela de produtos -->
+  <p-table
+    *ngIf="!loading"
+    [value]="(produtos$ | async) || []"
+    stripedRows
+    [tableStyle]="{ 'min-width': '50rem' }"
+    [paginator]="true"
+    [rows]="10"
+  >
+    <ng-template #header>
+      <tr>
+        <th>ID</th>
+        <th>Produto</th>
+        <th>Quantidade no estoque</th>
+        <th>Preço</th>
+        <th>Ações</th>
+      </tr>
+    </ng-template>
+    <ng-template #body let-product>
+      <tr>
+        <td>{{ product.id }}</td>
+        <td>{{ product.nome }}</td>
+        <td>{{ product.quantidadeEstoque }}</td>
+        <td>{{ product.preco }} $</td>
+        <td>
+          <p-button
+            icon="pi pi-pencil"
+            text
+            severity="secondary"
+            routerLink="/editar-produto/{{ product.id }}"
+            label="Editar"
+          />
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
+</section>

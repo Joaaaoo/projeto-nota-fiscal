@@ -1,0 +1,54 @@
+@import "primeicons/primeicons.css";
+
+* {
+  font-family: "Open Sans", serif;
+  margin: 0;
+  padding: 0;
+}
+
+.helper-center {
+  padding: 0 5% !important;
+}
+
+p-progressSpinner {
+  margin: 0 auto !important;
+}
+
+p-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 50%;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  margin-top: 1rem;
+  gap: 1rem;
+}
+
+.formulario-campo {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.formulario-campo-botoes {
+  display: flex;
+  margin-top: 1rem;
+  flex-direction: row;
+  gap: 1rem;
+}
+
+.formulario-campo-obrigatorio-aviso {
+  color: red;
+}
+
+.formulario-invalido {
+  color: red;
+}
+
+.formulario-valido {
+  color: green;
+}

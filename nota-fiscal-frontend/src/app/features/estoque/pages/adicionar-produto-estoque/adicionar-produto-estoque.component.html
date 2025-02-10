@@ -1,0 +1,66 @@
+<!-- Componente de toast PRIMGNG para mostrar notificações no canto da tela -->
+<p-toast key="tr" position="top-right"></p-toast>
+
+<section class="helper-center" @fadeIn>
+  <!-- Componente de título dinâmico -->
+  <app-componente-titulo-dinamico
+    titulo="Adicionar Produto"
+    subtitulo="Preencha os campos para adicionar um novo produto ao estoque"
+  ></app-componente-titulo-dinamico>
+
+  <!-- Formulário de cadastro de produto -->
+  <p-panel header="Formulário de cadastro">
+    <form [formGroup]="produtoForm" (ngSubmit)="onSubmit()">
+      <div class="formulario-campo">
+        <label for="nome"
+          >Nome<span class="formulario-campo-obrigatorio-aviso"> *</span></label
+        >
+        <input id="nome" type="text" pInputText formControlName="nome" />
+      </div>
+      <div class="formulario-campo">
+        <label for="preco"
+          >Preço
+          <span class="formulario-campo-obrigatorio-aviso"> *</span></label
+        >
+        <input id="preco" type="number" pInputText formControlName="preco" />
+      </div>
+      <div class="formulario-campo">
+        <label for="quantidadeEstoque"
+          >Quantidade em Estoque
+          <span class="formulario-campo-obrigatorio-aviso"> *</span></label
+        >
+        <input
+          id="quantidadeEstoque"
+          type="number"
+          pInputText
+          formControlName="quantidadeEstoque"
+        />
+      </div>
+      <div class="formulario-validacao">
+        <span *ngIf="produtoForm.invalid" class="formulario-invalido">
+          Formulário inválido, preecha todos os campos obrigatórios.
+        </span>
+        <span *ngIf="produtoForm.valid" class="formulario-valido">
+          Formulário válido
+        </span>
+      </div>
+      <div class="formulario-campo-botoes">
+        <button
+          type="submit"
+          pButton
+          label="Salvar"
+          icon="pi pi-check"
+          severity="success"
+          [disabled]="produtoForm.invalid"
+        ></button>
+        <button
+          pButton
+          label="Cancelar"
+          icon="pi pi-times"
+          severity="warn"
+          (click)="voltar()"
+        ></button>
+      </div>
+    </form>
+  </p-panel>
+</section>
