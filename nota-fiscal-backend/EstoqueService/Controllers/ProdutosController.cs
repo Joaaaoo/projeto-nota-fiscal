@@ -18,9 +18,6 @@ namespace EstoqueService.Controllers
             _service = service;
         }
 
-        [HttpPost]
-       
-
         [HttpGet]
         public async Task<IActionResult> ListarProdutos()
         {
@@ -53,6 +50,7 @@ namespace EstoqueService.Controllers
             }
         }
 
+        [HttpPost]
         public async Task<IActionResult> CadastrarProduto([FromBody] ProdutoDTO produtoDTO)
         {
             try

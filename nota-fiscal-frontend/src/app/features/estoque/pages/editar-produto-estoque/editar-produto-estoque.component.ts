@@ -18,6 +18,7 @@ import { Toast } from 'primeng/toast';
 import { fadeInAnimation, fadeInOut } from '../../../../utils/animations';
 import { of } from 'rxjs';
 import { delay } from 'rxjs/operators';
+import { Produto } from '../../models/produto.model';
 
 @Component({
   selector: 'app-editar-produto-estoque',
@@ -65,7 +66,13 @@ export class EditarProdutoEstoqueComponent implements OnInit {
   carregarProduto() {
     this.produtoId = this.route.snapshot.params['id'];
     this.estoqueService.getProdutoById(this.produtoId).subscribe({
-      next: (produto) => this.produtoForm.patchValue(produto),
+      next: (produto: Produto) => {
+        this.produtoForm.patchValue({
+          nome: produto.nome,
+          preco: produto.preco,
+          quantidade: produto.quantidadeEstoque, // Mapeia quantidadeEstoque para quantidade
+        });
+      },
       error: (error) => {
         this.messageService.add({
           key: 'tr',
