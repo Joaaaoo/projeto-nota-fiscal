@@ -42,7 +42,7 @@ Os microserviços se comunicam de forma assíncrona utilizando **RabbitMQ**. O f
 ## 🚀 Como Executar o Projeto
 ### ** Clonar o Repositório**
 ```sh
-git clone https://github.com/seu-repositorio/nome-do-projeto.git
+git clone [url-projeto]
 cd nome-do-projeto
 ```
 
