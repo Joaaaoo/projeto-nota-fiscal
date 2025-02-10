@@ -50,10 +50,25 @@ cd nome-do-projeto
 ```sh
 docker-compose up --build 
 ```
-Rodar o comando docker dentro do diretorio /nota-fiscal-backend e /nota-fiscal-frontend para subir os containers
+Rodar o comando docker dentro do diretorio /nota-fiscal-backend irá subir o container 
+
+Para rodar o front end angular é necessário criar uma imagem
+
+```sh
+docker build -t nota-fiscal-frontend .
+```
+
+Após criar a imagem rode o container docker 
+
+```sh
+docker run -p 4201:4200 nota-fiscal-frontend
+```
+
+### ** Nova configuração para rodar com docker-compose em breve! **
+
 
 ### ** Acessar a Aplicação**
-- **Frontend**: http://localhost:4200
+- **Frontend**: http://localhost:4201
 - **RabbitMQ Dashboard**: http://localhost:15672 (Usuário: guest | Senha: guest)
 - **Estoque API**: http://localhost:5001
 - **Faturamento API**: http://localhost:5002
